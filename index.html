@@ -21,19 +21,31 @@
           Akash<span class="text-brand">.</span>
         </a>
         
-        <div class="nav-links">
-          <a href="#about" class="nav-link">About</a>
-          <a href="#skills" class="nav-link">Skills</a>
-          <a href="#project" class="nav-link">Projects</a>
-          <a href="#contact" class="btn-cta">Contact Me</a>
-        </div>
+        <div style="display: flex; align-items: center; gap: 1rem;">
+          <div class="nav-links">
+            <a href="#about" class="nav-link">About</a>
+            <a href="#skills" class="nav-link">Skills</a>
+            <a href="#project" class="nav-link">Projects</a>
+            <a href="#contact" class="btn-cta">Contact Me</a>
+          </div>
 
-        <!-- Mobile Menu Icon -->
-        <button class="mobile-toggle">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+          <!-- Theme Toggle -->
+          <button class="theme-toggle" id="theme-toggle" aria-label="Toggle Theme">
+            <svg class="sun-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
             </svg>
-        </button>
+            <svg class="moon-icon" style="display: none;" xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
+            </svg>
+          </button>
+
+          <!-- Mobile Menu Icon -->
+          <button class="mobile-toggle">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+              </svg>
+          </button>
+        </div>
       </div>
     </nav>
 
@@ -63,10 +75,11 @@
         <!-- Hero Visual -->
         <div class="hero-visual">
             <div class="visual-box">
-                <div class="visual-border"></div>
+                <div class="visual-border"> </div>
                 <div class="visual-border visual-border-2"></div>
                 <div class="visual-content">
                     <!-- <span class="initials"></span> -->
+                     <img src="/assets/icons/user.jpeg" alt="" width="100%"style="border-radius: 10px;">
                 </div>
             </div>
         </div>
@@ -189,7 +202,8 @@
           <div class="project-card">
             <div>
               <div class="project-image-placeholder">
-                <span class="project-placeholder-text">Preview</span>
+                <!-- <span class="project-placeholder-text">Preview</span> -->
+                 <img src="/assets/icons/vs code.webp" alt="" width="100%" style="border-radius: 10px;">
               </div>
               <h3 class="project-title">VS Code Landing Page</h3>
               <p class="project-desc">A responsive replica of the Visual Studio Code landing page.</p>
@@ -249,7 +263,8 @@
           <div class="project-card">
             <div>
               <div class="project-image-placeholder">
-                <span class="project-placeholder-text">Game</span>
+                <!-- <span class="project-placeholder-text">Game</span> -->
+                 <img src="/assets/icons/tic tac toe.webp" alt="" width="100%" style="border-radius: 10px;">
               </div>
               <h3 class="project-title">Tic Tac Toe</h3>
               <p class="project-desc">Classic game logic implemented with JavaScript.</p>
@@ -295,7 +310,7 @@
               type="text"
               id="name"
               name="name"
-              placeholder="John Doe"
+              placeholder="Akash Kumar"
               required
               class="form-control"
             />
@@ -336,5 +351,30 @@
       <p>&copy; 2026 Akash Kumar. All rights reserved.</p>
     </footer>
 
+    <script>
+      const themeToggleBtn = document.getElementById('theme-toggle');
+      const sunIcon = document.querySelector('.sun-icon');
+      const moonIcon = document.querySelector('.moon-icon');
+      
+      // Check for saved theme
+      if (localStorage.getItem('theme') === 'light') {
+        document.body.classList.add('light-mode');
+        sunIcon.style.display = 'none';
+        moonIcon.style.display = 'block';
+      }
+
+      themeToggleBtn.addEventListener('click', () => {
+        document.body.classList.toggle('light-mode');
+        if (document.body.classList.contains('light-mode')) {
+          localStorage.setItem('theme', 'light');
+          sunIcon.style.display = 'none';
+          moonIcon.style.display = 'block';
+        } else {
+          localStorage.setItem('theme', 'dark');
+          sunIcon.style.display = 'block';
+          moonIcon.style.display = 'none';
+        }
+      });
+    </script>
   </body>
 </html>
