@@ -415,7 +415,7 @@ h3 {
 }
 
 .bg-darker {
-  background-color: var(--bg-darker);
+  background-color: var(--bg-color);
 }
 
 .about-container {
