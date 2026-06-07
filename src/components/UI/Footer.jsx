@@ -27,6 +27,16 @@ const Footer = () => {
         start: 'top 90%',
       }
     });
+
+    // Fix for production layout shifts
+    const handleRefresh = () => ScrollTrigger.refresh();
+    window.addEventListener("load", handleRefresh);
+    window.addEventListener("resize", handleRefresh);
+
+    return () => {
+      window.removeEventListener("load", handleRefresh);
+      window.removeEventListener("resize", handleRefresh);
+    };
   }, { scope: footerRef, dependencies: [isLoading] });
 
   return (

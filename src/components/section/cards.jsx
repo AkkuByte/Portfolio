@@ -50,6 +50,16 @@ function Cards() {
     
     // Refresh ScrollTrigger to ensure it calculates heights correctly after the page renders
     ScrollTrigger.refresh();
+
+    // Fix for production layout shifts (e.g. GitHub Pages)
+    const handleRefresh = () => ScrollTrigger.refresh();
+    window.addEventListener("load", handleRefresh);
+    window.addEventListener("resize", handleRefresh);
+
+    return () => {
+      window.removeEventListener("load", handleRefresh);
+      window.removeEventListener("resize", handleRefresh);
+    };
   }, { scope: containerRef, dependencies: [isLoading] });
 
   return (
