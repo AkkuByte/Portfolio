@@ -1,0 +1,106 @@
+/* --- CSS Variables for Theming --- */
+:root {
+  /* Dark Theme Colors */
+  --bg-color: #000000;
+  --surface-color: #2a2a2a;
+  --text-primary: #ffffff;
+  --text-secondary: #a0a0a0;
+
+  /* Fire Palette */
+  --fire-900: #370617;
+  --fire-800: #6a040f;
+  --fire-700: #9d0208;
+  --fire-600: #d00000;
+  --fire-500: #dc2f02;
+  --fire-400: #e85d04;
+  --fire-300: #f48c06;
+  --fire-200: #faa307;
+  --fire-100: #ffba08;
+
+  /* Layout Colors */
+  --bg-secondary: #151515;
+
+  /* Glassmorphism settings */
+  --glass-bg: rgba(255, 255, 255, 0.03);
+  --surface-glass: rgba(20, 20, 20, 0.4);
+  --footer-glass: rgba(68, 68, 68, 0.393);
+  --glass-border-light: rgba(255, 255, 255, 0.05);
+  --glass-border: rgba(255, 255, 255, 0.1);
+  --glass-border-medium: rgba(255, 255, 255, 0.2);
+  --glass-border-strong: rgba(255, 255, 255, 0.3);
+  
+  /* Shadows */
+  --shadow-light: rgba(0, 0, 0, 0.1);
+  --shadow-color: rgba(0, 0, 0, 0.4);
+  --glass-shadow: rgba(83, 83, 83, 0.194);
+  --footer-shadow: rgba(31, 38, 135, 0.37);
+}
+
+/* --- Global Reset --- */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: var(--bg-color);
+  color: var(--text-primary);
+  font-family: 'Inter', system-ui, sans-serif;
+  min-height: 100vh;
+  width: 100%;
+  overflow-x: hidden; /* Prevents any element from stretching the page width and creating scrollbars */
+  position: relative;
+}
+
+/* --- Glowing Orbs --- */
+.orb-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: -1;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.glowing-orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(120px);
+  opacity: 0.5;
+  animation: float 10s ease-in-out infinite alternate;
+}
+
+.orb-1 {
+  top: -10%;
+  left: -10%;
+  width: 50vw;
+  height: 50vw;
+  background-color: var(--fire-800);
+}
+
+.orb-2 {
+  bottom: -10%;
+  right: -10%;
+  width: 40vw;
+  height: 40vw;
+  background-color: var(--fire-600);
+  animation-delay: -5s;
+}
+
+.orb-3 {
+  top: 40%;
+  left: 60%;
+  width: 30vw;
+  height: 30vw;
+  background-color: var(--fire-200);
+  opacity: 0.3;
+  animation-delay: -2s;
+}
+
+@keyframes float {
+  0% { transform: translate(0, 0); }
+  100% { transform: translate(30px, 50px); }
+}

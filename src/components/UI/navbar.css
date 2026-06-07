@@ -1,0 +1,32 @@
+
+.navbar {
+    background-color: var(--primary-bg);
+    color: var(--fire-100);
+    box-shadow: var(--shadow-light);
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    height: 64px;
+    backdrop-filter: blur(16px) saturate(180%);
+    border-bottom: 1px solid var(--glass-border);
+    
+}
+
+.container{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    height: 100%;
+}
+
+/* ensure following content isn't hidden under the fixed navbar */
+.navbar + * {
+    padding-top: 64px;
+}
+

@@ -1,0 +1,29 @@
+#Project{
+    height: 60vh;
+    /* background-color: var(--primary-bg); */
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 2% 5%;
+    width: 100%;
+    max-width: 100%;
+    overflow: hidden; /* Crucial: stops GSAP 'x: 2000' animation from stretching the page width */
+    border-radius: 40px 40px 0 0;
+}
+
+.title{
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-end; /* Correctly aligns flex items to the right in a column */
+    text-align: right;     /* Aligns text inside the elements to the right */
+    gap: 1rem;
+    max-width: 90%;        /* Keeps it within the bounds of the parent container */
+}
+
+h1{
+    font-size: clamp(2rem, 6vw, 4rem); /* Dynamic font sizing: scales down on smaller screens */
+    letter-spacing: 0.5rem;
+    word-break: break-word;            /* Prevents single long words from overflowing */
+}

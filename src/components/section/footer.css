@@ -1,0 +1,46 @@
+footer {
+    height: 80vh;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* margin: 3% 3%; */
+    overflow: hidden; /* Prevent scrollbar when cards come from bottom */
+}
+
+.footer-column-wrapper {
+    margin: -2%;
+    transform-origin: bottom center;
+}
+
+.footer-column-wrapper:nth-child(1) { z-index: 4; }
+.footer-column-wrapper:nth-child(2) { z-index: 3; }
+.footer-column-wrapper:nth-child(3) { z-index: 2; }
+.footer-column-wrapper:nth-child(4) { z-index: 1; }
+
+.footer-column {
+    background-color: var(--footer-glass);
+    width: 20vw;
+    height: 40vh;
+    box-shadow: 0 8px 32px 0 var(--footer-shadow);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    border-radius: 10px;
+    transition: transform 0.3s ease, z-index 0.3s;
+    padding: 5px 18px;
+}
+
+.footer-column:hover {
+    transform: translateY(-20px) scale(1.05) !important;
+    z-index: 10 !important;
+}
+
+.cont {
+    margin-top: 5%;
+    color: var(--fire-200);
+}
+
+.footer-column h1{
+    font-size: 3rem;
+    color: var(--fire-100);
+}
