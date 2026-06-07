@@ -1,29 +1,48 @@
-#Project{
-    height: 60vh;
-    /* background-color: var(--primary-bg); */
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-    padding: 2% 5%;
-    width: 100%;
-    max-width: 100%;
-    overflow: hidden; /* Crucial: stops GSAP 'x: 2000' animation from stretching the page width */
-    border-radius: 40px 40px 0 0;
-}
-
-.title{
-
+#Project {
+    min-height: 80vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: flex-end; /* Correctly aligns flex items to the right in a column */
-    text-align: right;     /* Aligns text inside the elements to the right */
-    gap: 1rem;
-    max-width: 90%;        /* Keeps it within the bounds of the parent container */
+    align-items: center;
+    padding: 6rem 5%;
+    width: 100%;
+    position: relative;
+    z-index: 5;
 }
 
-h1{
-    font-size: clamp(2rem, 6vw, 4rem); /* Dynamic font sizing: scales down on smaller screens */
-    letter-spacing: 0.5rem;
-    word-break: break-word;            /* Prevents single long words from overflowing */
+.section-title {
+    font-size: clamp(2rem, 5vw, 4rem);
+    margin-bottom: 4rem;
+    color: var(--text-primary);
+}
+
+.project-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    width: 100%;
+    max-width: 1200px;
+}
+
+.project-card {
+    padding: 3rem 2rem;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 200px;
+}
+
+.project-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 40px rgba(0,0,0,0.5);
+    border-color: var(--glass-border-strong);
+}
+
+.project-card h1 {
+    font-size: clamp(1.5rem, 3vw, 2.5rem);
+    letter-spacing: 0.1em;
+    margin: 0;
 }

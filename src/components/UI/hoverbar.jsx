@@ -1,11 +1,21 @@
+import gsap from 'gsap';
+import { useGSAP } from '@gsap/react';
+import { useLoading } from '../../context/LoadingContext';
 import './hoverbar.css'
-gsap.from("#Pill",{
-    opacity:0,
-    scale:0.1,
-    duration:2,
-    delay:2,
-});
+
 function Hoverbar() {
+    const { isLoading } = useLoading();
+
+    useGSAP(() => {
+        if (isLoading) return;
+        gsap.from("#Pill",{
+            translateY:50,
+            opacity:0,
+            scale:0.1,
+            duration:3,
+            delay:0, // removed delay since we wait for loading
+        });
+    }, { dependencies: [isLoading] });
     return (
 
         <div className="hover_bar" id='Pill'>

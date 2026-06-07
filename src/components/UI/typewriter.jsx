@@ -2,14 +2,18 @@ import { useRef } from 'react';
 import gsap from 'gsap';
 import { TextPlugin } from 'gsap/TextPlugin';
 import { useGSAP } from '@gsap/react';
+import { useLoading } from '../../context/LoadingContext';
 
 // CRITICAL: Register the plugin before using it
 gsap.registerPlugin(TextPlugin);
 
 const GsapTypewriter = ({ words = ["MERN Developer", "UI/UX Designer", "Problem Solver"] }) => {
   const textRef = useRef(null);
+  const { isLoading } = useLoading();
 
   useGSAP(() => {
+    if (isLoading) return;
+
     // 1. Create a master timeline that loops infinitely (repeat: -1)
     const tl = gsap.timeline({ repeat: -1 });
 
@@ -27,7 +31,7 @@ const GsapTypewriter = ({ words = ["MERN Developer", "UI/UX Designer", "Problem 
         ease: "none",
       });
     });
-  }, { dependencies: [words] }); // Re-run if the words array changes
+  }, { dependencies: [words, isLoading] }); // Re-run if the words array changes
 
   return (
     <span className="typewriter-container">

@@ -1,12 +1,13 @@
 import './index.css';
 import Navbar from './components/UI/navbar'
-import Footer from './components/section/footer'
+import Cards from './components/section/cards'
 import Hero from './components/section/hero'
 import Hoverbar from './components/UI/hoverbar';
 import Project from './components/section/project';
-import Cards from './components/layouts/floating_cards';
+import FloatingCards from './components/layouts/floating_cards';
 import Hero3DScene from './components/UI/floatingObjects'
 import LoadingScreen from './components/UI/LoadingScreen'
+import Footer from './components/UI/Footer'
 
 function App() {
   return (
@@ -21,11 +22,12 @@ function App() {
 
     <Navbar />
     <Hero/>
-    <Hero3DScene/>
-    <Hoverbar/>
+    {/* <Hero3DScene/> */}
+    {/* <Hoverbar/> */}
     {/* <Cards/> */}
-    <Footer/>
+    <Cards/>
      <Project/>
+     <Footer/>
    
   </>
   );

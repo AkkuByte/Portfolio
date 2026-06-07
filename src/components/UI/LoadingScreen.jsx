@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { useProgress } from '@react-three/drei';
+import { useLoading } from '../../context/LoadingContext';
 import './LoadingScreen.css';
 
 export default function LoadingScreen() {
+  const { setIsLoading: setGlobalLoading } = useLoading();
   const { active, progress } = useProgress();
   const [isVisible, setIsVisible] = useState(true);
   const [hasStarted, setHasStarted] = useState(false);
@@ -35,6 +37,7 @@ export default function LoadingScreen() {
       document.body.style.overflow = 'hidden';
     } else {
       document.body.style.overflow = '';
+      setGlobalLoading(false);
     }
     
     return () => {

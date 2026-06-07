@@ -1,39 +1,71 @@
 /* --- CSS Variables for Theming --- */
 :root {
   /* Dark Theme Colors */
-  --bg-color: #000000;
-  --surface-color: #2a2a2a;
+  --bg-color: #030305;
+  --surface-color: #12121a;
   --text-primary: #ffffff;
   --text-secondary: #a0a0a0;
 
-  /* Fire Palette */
-  --fire-900: #370617;
-  --fire-800: #6a040f;
-  --fire-700: #9d0208;
-  --fire-600: #d00000;
-  --fire-500: #dc2f02;
-  --fire-400: #e85d04;
-  --fire-300: #f48c06;
-  --fire-200: #faa307;
-  --fire-100: #ffba08;
+  /* Cosmic Palette (Loading Screen Theme) */
+  --fire-900: #1b0b3b;
+  --fire-800: #3b1464;
+  --fire-700: #5a1d8d;
+  --fire-600: #7825b6;
+  --fire-500: #9013fe;
+  --fire-400: #7b51f2;
+  --fire-300: #657fe6;
+  --fire-200: #4a90e2;
+  --fire-100: #75c0f5;
+
+  /* Gradient text */
+  --gradient-cosmic: linear-gradient(135deg, var(--fire-100), var(--fire-500));
 
   /* Layout Colors */
-  --bg-secondary: #151515;
+  --bg-secondary: #0a0a0f;
 
   /* Glassmorphism settings */
   --glass-bg: rgba(255, 255, 255, 0.03);
-  --surface-glass: rgba(20, 20, 20, 0.4);
-  --footer-glass: rgba(68, 68, 68, 0.393);
-  --glass-border-light: rgba(255, 255, 255, 0.05);
-  --glass-border: rgba(255, 255, 255, 0.1);
-  --glass-border-medium: rgba(255, 255, 255, 0.2);
+  --surface-glass: rgba(20, 20, 30, 0.4);
+  --footer-glass: rgba(68, 68, 68, 0.1);
+  --glass-border-light: rgba(255, 255, 255, 0.03);
+  --glass-border: rgba(255, 255, 255, 0.08);
+  --glass-border-medium: rgba(255, 255, 255, 0.15);
   --glass-border-strong: rgba(255, 255, 255, 0.3);
   
   /* Shadows */
-  --shadow-light: rgba(0, 0, 0, 0.1);
-  --shadow-color: rgba(0, 0, 0, 0.4);
-  --glass-shadow: rgba(83, 83, 83, 0.194);
-  --footer-shadow: rgba(31, 38, 135, 0.37);
+  --shadow-light: rgba(0, 0, 0, 0.2);
+  --shadow-color: rgba(0, 0, 0, 0.6);
+  --glass-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+  
+  /* Fonts */
+  --font-primary: 'Outfit', system-ui, sans-serif;
+  --font-secondary: 'Inter', system-ui, sans-serif;
+}
+
+:root {
+  --font-xs: 12px;
+  --font-sm: 14px;
+  --font-base: 16px;
+  --font-lg: 20px;
+  --font-xl: 24px;
+  --font-2xl: 32px;
+  --font-3xl: 52px;
+  --font-4xl: 68px;
+  --font-5xl: 88px;
+
+  --space-xs: 8px;
+  --space-sm: 13px;
+  --space-md: 21px;
+  --space-lg: 34px;
+  --space-xl: 55px;
+  --space-2xl: 89px;
+  --space-3xl: 144px;
+
+  --radius-sm: 8px;
+  --radius-md: 16px;
+  --radius-lg: 24px;
+  --radius-xl: 40px;
+  --radius-full: 9999px;
 }
 
 /* --- Global Reset --- */
@@ -43,14 +75,42 @@
   padding: 0;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   background-color: var(--bg-color);
   color: var(--text-primary);
-  font-family: 'Inter', system-ui, sans-serif;
+  font-family: var(--font-primary);
   min-height: 100vh;
   width: 100%;
-  overflow-x: hidden; /* Prevents any element from stretching the page width and creating scrollbars */
+  overflow-x: hidden; 
   position: relative;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 700;
+  line-height: 1.1;
+}
+
+/* Utilities */
+.glass-panel {
+  background: var(--glass-bg);
+  backdrop-filter: blur(12px) saturate(180%);
+  -webkit-backdrop-filter: blur(12px) saturate(180%);
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--glass-shadow);
+  border-radius: var(--radius-lg);
+}
+
+.text-gradient {
+  background: var(--gradient-cosmic);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
 /* --- Glowing Orbs --- */
@@ -69,8 +129,11 @@ body {
   position: absolute;
   border-radius: 50%;
   filter: blur(120px);
-  opacity: 0.5;
-  animation: float 10s ease-in-out infinite alternate;
+  opacity: 0.4;
+  animation-duration: 20s;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
 }
 
 .orb-1 {
@@ -79,28 +142,45 @@ body {
   width: 50vw;
   height: 50vw;
   background-color: var(--fire-800);
+  animation-name: orbFloat1;
 }
 
 .orb-2 {
   bottom: -10%;
-  right: -10%;
-  width: 40vw;
-  height: 40vw;
-  background-color: var(--fire-600);
+  right: -5%;
+  width: 45vw;
+  height: 45vw;
+  background-color: var(--fire-700);
+  animation-name: orbFloat2;
   animation-delay: -5s;
 }
 
 .orb-3 {
   top: 40%;
   left: 60%;
-  width: 30vw;
-  height: 30vw;
+  width: 35vw;
+  height: 35vw;
   background-color: var(--fire-200);
-  opacity: 0.3;
+  animation-name: orbFloat3;
   animation-delay: -2s;
+  animation-duration: 15s;
+  opacity: 0.2;
 }
 
-@keyframes float {
-  0% { transform: translate(0, 0); }
-  100% { transform: translate(30px, 50px); }
+@keyframes orbFloat1 {
+  0% { transform: translate(0, 0) scale(0.8); opacity: 0.2; }
+  50% { transform: translate(60px, 80px) scale(1); opacity: 0.4; }
+  100% { transform: translate(120px, 30px) scale(1.1); opacity: 0.5; }
+}
+
+@keyframes orbFloat2 {
+  0% { transform: translate(0, 0) scale(0.8); opacity: 0.2; }
+  50% { transform: translate(-40px, -70px) scale(1); opacity: 0.3; }
+  100% { transform: translate(-80px, -30px) scale(1.1); opacity: 0.4; }
+}
+
+@keyframes orbFloat3 {
+  0% { transform: translate(0, 0) scale(0.8); opacity: 0.1; }
+  50% { transform: translate(-60px, 40px) scale(1); opacity: 0.3; }
+  100% { transform: translate(40px, 80px) scale(1.1); opacity: 0.4; }
 }
