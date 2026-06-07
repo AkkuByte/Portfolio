@@ -6,9 +6,12 @@ import Hoverbar from './components/UI/hoverbar';
 import Project from './components/section/project';
 import Cards from './components/layouts/floating_cards';
 import Hero3DScene from './components/UI/floatingObjects'
+import LoadingScreen from './components/UI/LoadingScreen'
+
 function App() {
   return (
   <>
+    <LoadingScreen />
     {/* Background Glowing Orbs */}
     <div className="orb-container">
       <div className="glowing-orb orb-1"></div>

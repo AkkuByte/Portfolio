@@ -10,10 +10,9 @@ function Footer() {
   const containerRef = useRef(null);
 
   useGSAP(() => {
-    const cards = gsap.utils.toArray('.footer-column-wrapper');
-
-    // Cards start stacked off-screen at the bottom and spread into a hand of cards
-    gsap.fromTo(cards, 
+    // Let GSAP's internal selector handle scoping automatically
+    // by passing the class string directly.
+    gsap.fromTo('.footer-column-wrapper', 
       {
         x: (index) => {
           // Offsets to stack them exactly in the center
@@ -38,9 +37,13 @@ function Footer() {
           start: "top 95%", 
           end: "top 30%",
           scrub: 1.5, // Smooth catching up effect
+          // markers: true, // Uncomment this line if you need to debug the trigger points visually
         }
       }
     );
+    
+    // Refresh ScrollTrigger to ensure it calculates heights correctly after the page renders
+    ScrollTrigger.refresh();
   }, { scope: containerRef });
 
   return (
